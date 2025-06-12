@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ねぎま</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>ねぎま</h1>
+    <div id="start-screen">
+      <p>肉とねぎが交互に出題されます。</p>
+      <p>制限時間は３分です。できるだけ多く解いてください。</p>
+      <p>スタートを押すとすぐ始まります。</p>
+      <p>間違えてもパスするまではその問題が表示されます。</p>
+      <p>一度パスしたら戻ってこれません。</p>
+      <p>解答形式（ひらがなとか）は書いてます。一部わかりづらいのがありますが空気読んで欲しいです。</p>
+      <button onclick="startQuiz()">スタート</button>
+    </div>
+
+    <div id="quiz-screen" class="hidden">
+      <div id="timer">残り時間: 180秒</div>
+      <div id="question"></div>
+      <input type="text" id="answer" placeholder="答えを入力..." />
+      <button onclick="submitAnswer()">回答</button>
+      <button onclick="passQuestion()">パス</button>
+    </div>
+
+    <div id="result" class="hidden"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
