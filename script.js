@@ -19,12 +19,12 @@ const questions = [
 
 let current = 0;
 let correct = 0;
-let timer = 180;
 let interval;
 let correctAnswers = [];
 let startTime; // クイズ全体開始時間
 let questionStartTime; // 現在の問題表示開始時間
 let questionTimes = []; // 各問題の滞在時間（秒）
+const QUIZ_DURATION = 180; // 制限時間（秒）
 
 function startQuiz() {
   document.getElementById("start-screen").classList.add("hidden");
@@ -33,10 +33,20 @@ function startQuiz() {
   correct = 0;
   correctAnswers = [];
   questionTimes = [];
-  timer = 180;
   startTime = Date.now();
   showQuestion();
-  interval = setInterval(updateTimer, 1000);
+  interval = setInterval(updateTimer, 500); // 500ms ごとに残り時間更新
+}
+
+function updateTimer() {
+  const elapsed = Math.floor((Date.now() - startTime) / 1000);
+  const remaining = QUIZ_DURATION - elapsed;
+  document.getElementById("timer").innerText = `残り時間: ${remaining}秒`;
+
+  if (remaining <= 0) {
+    clearInterval(interval);
+    endQuiz();
+  }
 }
 
 function showQuestion() {
@@ -44,7 +54,7 @@ function showQuestion() {
     endQuiz();
     return;
   }
-  questionStartTime = Date.now(); // 問題表示時刻を記録
+  questionStartTime = Date.now();
 
   const question = questions[current];
   const container = document.getElementById("question");
@@ -55,10 +65,8 @@ function showQuestion() {
   answerInput.placeholder = question.placeholder || "答えを入力してください";
 }
 
-// 解答時に呼ばれる
 function submitAnswer() {
   const now = Date.now();
-  // 現在の問題の滞在時間（秒）を計算して保存
   questionTimes[current] = Math.floor((now - questionStartTime) / 1000);
 
   const userAnswer = document.getElementById("answer").value.trim().toLowerCase();
@@ -79,26 +87,20 @@ function submitAnswer() {
   }
 }
 
-// パス時に呼ばれる
 function passQuestion() {
   const now = Date.now();
   questionTimes[current] = Math.floor((now - questionStartTime) / 1000);
-
   current++;
   showQuestion();
 }
 
-function updateTimer() {
-  timer--;
-  document.getElementById("timer").innerText = `残り時間: ${timer}秒`;
-  if (timer <= 0) {
-    clearInterval(interval);
-    endQuiz();
-  }
-}
-
 function endQuiz() {
   clearInterval(interval);
+
+  // 最後の問題の滞在時間を記録（まだ保存されていない場合）
+  if (questionStartTime && questionTimes[current] === undefined) {
+    questionTimes[current] = Math.floor((Date.now() - questionStartTime) / 1000);
+  }
 
   const elapsedMs = Date.now() - startTime;
   const elapsedSec = Math.floor(elapsedMs / 1000);
@@ -119,7 +121,6 @@ function endQuiz() {
   }
   imagesHTML += "</div>";
 
-  // 各問題の滞在時間を表示用に整形
   let timesHTML = "<ul>";
   for (let i = 0; i < questions.length; i++) {
     const t = questionTimes[i] !== undefined ? questionTimes[i] : 0;
