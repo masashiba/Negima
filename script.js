@@ -1,5 +1,5 @@
 const questions = [
-  { img: "images/image1.png", a: "man", placeholder: "半角アルファベット" },
+  { img: "images/image1.png", a: "man", placeholder: "半角アルファベット小文字" },
   { img: "images/image2.png", a: "ねぎとろ", placeholder: "全角ひらがな" },
   { img: "images/image3.png", a: "いざよい", placeholder: "全角ひらがな" },
   { img: "images/image4.png", a: "エネルギー", placeholder: "全角カタカナ" },

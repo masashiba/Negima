@@ -79,3 +79,20 @@ img {
   text-align: center;
   font-style: italic;
 }
+
+.rules {
+  background-color: #f9f9f9;
+  padding: 1em;
+  border-left: 4px solid #4caf50;
+  border-radius: 8px;
+  list-style-type: disc;
+  margin: 1em 0;
+  text-align: left;
+  /* ← これを追加 */
+}
+
+.rules li {
+  margin: 0.5em 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
