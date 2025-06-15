@@ -129,11 +129,12 @@ function endQuiz() {
   timesHTML += "</ul>";
 
   const resultText = `
-    終了！<br>
+    ありがとう！<br>
     正解数: ${correct} / ${questions.length}<br>
     正解した問題: ${correctAnswers.length > 0 ? correctAnswers.join(", ") : "なし"}<br>
     経過時間: ${elapsedStr}<br><br>
     ${imagesHTML}<br><br>
+    <a href="answer.html" target="_blank">かるい解説</a><br><br>
     <strong>各問題の滞在時間</strong><br>
     ${timesHTML}
   `;

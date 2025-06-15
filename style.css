@@ -88,11 +88,38 @@ img {
   list-style-type: disc;
   margin: 1em 0;
   text-align: left;
-  /* ← これを追加 */
+}
+
+.important-rules {
+  border-color: #f44336;
+  /* 赤系で強調 */
+}
+
+.extra-rules {
+  border-color: #2196f3;
+  /* 青系で軽めに */
 }
 
 .rules li {
   margin: 0.5em 0;
   font-size: 0.95rem;
   line-height: 1.4;
+}
+
+button.start-button {
+  background-color: #4CAF50;
+  /* 緑色 */
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button.start-button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
 }

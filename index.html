@@ -10,19 +10,31 @@
   <div class="container">
     <h1>11期解神　解神セット　「ねぎま」</h1>
     <div id="start-screen">
-      <p>注意事項</p>
-      <ul class="rules">
+      <h2>注意事項</h2>
+      <ul class="rules important-rules">
         <li>肉とねぎが交互に出題されます。</li>
         <li>制限時間は３分で問題数は１５問です。</li>
-        <li>できるだけ多く解いてください。</li>
         <li>スタートを押すとすぐ始まります。</li>
         <li>間違えてもパスするまではその問題が表示されます。</li>
         <li>一度パスしたら戻ってこれません。</li>
         <li>解答形式の指定（ひらがなとか）は問題画像下部の解答欄に書いてます。</li>
-        <li>一部わかりづらい解答形式がありますが空気読んでください。</li>
-        <li>多分難しめ？なので頑張ってください。</li>
       </ul>
-      <button onclick="startQuiz()">スタート</button>
+      <h2>プチ情報</h2>
+      <ul class="rules extra-rules">
+        <li>できるだけ多く解いてください。</li>
+        <li>リロードしたらリセットされますので気をつけて。</li>
+        <li>一部わかりづらい解答形式がありますが空気読んでください。</li>
+        <li>10問解けたらwow、5問も解けたらyeahです。</li>
+      </ul>
+
+      <button class="start-button" onclick="startQuiz()">▶ スタート</button>
+
+      <div style="margin-top: 1em;">
+        <a href="list.html" target="_blank">問題一覧を見たい方はこちら</a>
+        <br>
+        <a href="answer.html" target="_blank">答えとか見たい方はこちら</a>
+      </div>
+
     </div>
 
     <div id="quiz-screen" class="hidden">
